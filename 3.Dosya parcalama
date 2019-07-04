@@ -1,0 +1,21 @@
+#Ortak bir dosyada yer alan Futbolculari takimlarina gore ayitiyoruz.
+try:
+    with open("futbolcular.txt", "r+", encoding="utf-8")as file:
+        satir=file.readlines()
+        for i in satir:
+            bilgi=i.split(",")
+            if 'Fenerbahçe\n' in bilgi:
+                with open("Fenerbahce.txt","a",encoding="utf-8") as fener:
+                    fener.write(bilgi[0]+"\n")
+                    fener.close()
+            elif 'Galatasaray\n' in bilgi:
+                with open("Galatasaray.txt","a",encoding="utf-8") as gs:
+                    gs.write(bilgi[0]+"\n")
+                    gs.close()
+            elif 'Beşiktaş\n'in bilgi:
+                with open("Besiktas.txt","a",encoding="utf-8") as bjk:
+                    bjk.write(bilgi[0]+"\n")
+                    bjk.close()
+        file.close()
+except IOError:
+    print("Kaynak dosya bulunamadi!")
