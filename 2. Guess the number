@@ -1,0 +1,35 @@
+""" Bir degiskene 0-100 arasinda bir deger atayin. Kullanicidan bu sayiyi tahmin etmesini isteyin.
+ Kullaniciyi yaptigi tahminlere gore yonlendirin. Kacinci denemede bildigini soyleyin."""
+ #with 'import random' we chose a random number instead durable one.
+# (sabit bir sayi yerine degisken bir sayi tutmasini istiyoruz.)
+import random
+
+print("GAME OF GUESSING NUMBER")
+print("I GUESSED A NUMBER IN MY MIND. LETS GUESS\nYOU HAVE 10 ATTEMPTS")
+number=random.randrange(1,100)
+try:
+    for i in range(10):
+        guess = int(input("Enter your guess:"))
+        if guess >= 100 or guess <= 0:
+            print("Invalid Entrance! Try Again...")
+            break
+        elif guess==number:
+            print("Congratulations, you hit the jackpot! You find it at your {}th try.".format(i+1))
+            satir = 5
+            for i in range(satir):
+                print(" " * (satir - i - 1) + '*' * (2 * i + 1))
+            break
+        elif guess<number+5 and guess>number:
+            print("So close keep going 'down'....")
+        elif guess>number-5 and guess<number:
+            print("So close keep 'up' going....")
+        elif guess+10>number and guess<number:
+            print("You are close, Guess a bigger number!!")
+        elif guess-10<number and guess>number:
+            print("You are close, Guess a smaller number!!")
+        elif guess+20<number or guess<number:
+            print("You are far away, guess bigger number!!!!")
+        elif guess-20>number or guess>number:
+            print("You are far away, guess smaller number!!!!")
+except ValueError:
+    print("Only numbers must be entered!!!")
