@@ -1,0 +1,46 @@
+''' Kullanicidan, kullanici adi ve parola olusturarak hesap olusturmasini isteyin.
+Bu aldiginiz bilgileri bir dosyaya yazdirin. Her gırıste dosyadakı bılgıler sıfırlanmasın
+kayıt bılgılerı dosyaya eklenmeye devam etsın. Kullanici daha once girilmis olan bir
+kullanici adiyla hesap olusturmak isterse,
+bu kullanici adinin daha once secildigini ve baska bir kullanici adiyla hesap olusturmasini isteyin.'''
+
+print("HESAP OLUSTURMA")
+
+try:
+
+    while True:
+        sec = input("Yapmak Istediginiz Islemi Seciniz:\n1)Hesap Olusturma\n2)Cikis")
+        if sec == '1':
+            user = input("Username:")
+            with open("gata.txt", "r", encoding="utf-8")as file:
+                data = file.read()
+                if user in data:
+                    print("Bu kullanici adi zaten kullanimda, Lutfen baska bir kullanici adi deneyin.")
+                    file.close()
+                    continue
+                else:
+                    with open("gata.txt", "a+", encoding="utf-8")as dosya:
+                        dosya.write(user + "\n")
+                        password = input("Password:")
+                        print("Kullanici adiniz:", user, "'dir", sep="")
+                        dosya.close()
+                        break
+        elif sec == '2':
+            print("Sistemden Cikiliyor...")
+            break
+        else:
+            print("Gecersiz giris yaptiniz...")
+except IOError:
+    print("Kaynak dosya bulunamadi!")
+
+
+
+
+
+
+
+
+
+
+
+
